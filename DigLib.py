@@ -2,10 +2,10 @@
 def login(username,password):
     sukses = False
     file = open("Digital_Library\DataLibrarian.csv", "r")
-    for data in file:
-        x,y = data.split(",")
-        x = x.strip()
-        if x == username and y == password:
+    for i in file:
+        a,b = i.split(",")
+        b = b.strip()
+        if a == username and b == password:
             sukses = True
             break
     file.close()
@@ -21,8 +21,8 @@ def access_librarian(options):
         password = input("Masukkan Password")
         login(username, password)
     else:
-        print("Username atau Password salah!")
-        access(options)
+        print("Username atau Password anda salah!")
+        access_librarian(options)
     
 def start():
     global options
