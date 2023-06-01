@@ -1,35 +1,99 @@
-print("Selamat datang di Digital Library")
-print('Masuk sebagai \n [1] Librarian \n [2] Peminjam')
-
-login = int(input("Masukkan angka"))
-
-if login==1:
-    usn = input("Masukkan Username")
-    pswd = input("Masukkan Password")
-    print("Login Berhasil!")
-elif login==2:
-    akun = input("Apakah Anda mempunyai akun? (Ya/Tidak)")
-    if akun=="Ya":
-        usn2 = input("Masukkan Username")
-        pswd2 = input("Masukkan Password")
+# Login Sebagai Librarian
+def login(username,password):
+    sukses = False
+    file = open("Digital_Library\DataLibrarian.csv", "r")
+    for data in file:
+        x,y = data.split(",")
+        x = x.strip()
+        if x == username and y == password:
+            sukses = True
+            break
+    file.close()
+    if sukses:
         print("Login Berhasil!")
     else:
-        print("Silahkan buat akun")
-        usn3 = input("Buat username anda")
-        pswd3 = input("Buat password anda")
+        print("Username atau Password salah!")
+
+def access_librarian(options):
+    global username
+    if options == "masuk":
+        username = input("Masukkan Username")
+        password = input("Masukkan Password")
+        login(username, password)
+    else:
+        print("Username atau Password salah!")
+        access(options)
+    
+def start():
+    global options
+    print("Selamat datang!")
+    options = input("Silahkan ketik 'masuk'")
+    if options != "masuk":
+        start()
         
-        # Masukkan ke database
-        teks = "\nUsername: {}\nPassword: {}".format(usn3,pswd3)
-        file_biodata = open("Database.txt","a")
-        file_biodata.write(teks)
-        file_biodata.close()
-        print("Selamat akun berhasil dibuat!")
-        ulang = input("Ingin melakukan login kembali? (Ya/Tidak)")
-        if ulang=="Ya":
-            usn3 = input("Masukkan Username")
-            pswd3 = input("Masukkan Password")
-            print("Login Berhasil!")
-else:
-    print("Angka yang dimasukkan tidak valid!")
-    
-    
+###################################################################################################################################
+
+# Login Sebagai Pengunjung
+def masuk(username,password):
+    sukses = False
+    file = open("Digital_Library\DataAkun.csv", "r")
+    for i in file:
+        a,b = i.split(",")
+        b = b.strip()
+        if a == username and b == password:
+            sukses = True
+            break
+    file.close()
+    if sukses:
+        print("Login Berhasil!")
+    else:
+        print("Username atau Password salah! Silahkan buat akun")
+        
+def daftar(username, password):
+    file = open("Digital_Library\DataAkun.csv", "a")
+    file.write("\n"+username+","+password)
+
+def access(option):
+    global username
+    if option == "masuk":
+        username = input("Masukkan Username")
+        password = input("Masukkan Password")
+        masuk(username, password)
+    else:
+        print("Masukkan Username dan Password yang baru")
+        username = input("Masukkan Username")
+        password = input("Masukkan Password")
+        daftar(username, password)
+        print("Akun berhasil dibuat, silahkan masuk")
+
+def mulai():
+    global option
+    print("Selamat datang!")
+    print("Ketik 'masuk' jika sudah punya akun")
+    print("Ketik 'daftar' jika belum punya akun")
+    option = input("Silahkan masukkan (masuk/daftar): ")
+    if option !="masuk" and option !="daftar":
+        mulai()
+
+###################################################################################################################################
+
+# Login Utama
+def pilih():
+    print("Selamat datang di Digital Library")
+    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung")
+    angka = int(input("Masukkan angka"))
+    if angka==1:
+        start()
+        access_librarian(options)
+    elif angka==2:
+        mulai()
+        access(option)
+    else:
+        raise ValueError("Angka tidak valid")
+
+pilih()
+
+
+#################################################################################################################################
+
+# Menu Librarian
