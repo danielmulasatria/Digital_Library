@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 # Login Sebagai Librarian
 def login(username,password):
     sukses = False
@@ -16,7 +18,7 @@ def login(username,password):
 
 def access_librarian(options):
     global username
-    if options == "masuk":
+    if options == "Ya":
         username = input("Masukkan Username")
         password = input("Masukkan Password")
         login(username, password)
@@ -27,8 +29,8 @@ def access_librarian(options):
 def start():
     global options
     print("Selamat datang!")
-    options = input("Silahkan ketik 'masuk'")
-    if options != "masuk":
+    options = input("Ketik 'Ya' apabila ingin masuk")
+    if options != "Ya":
         start()
         
 ###################################################################################################################################
@@ -96,4 +98,6 @@ pilih()
 
 #################################################################################################################################
 
-# Menu Librarian
+# Menu Librarian Pertama - Menampilkan daftar buku
+
+
