@@ -36,3 +36,4 @@ def daftarbuku():
     import tabulate
     os.system("CLS")
 
+def tambahbuku():
