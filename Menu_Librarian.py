@@ -40,9 +40,7 @@ def daftarbuku():
 
 def tambahbuku():
 
-def caribuku():
-    import os
-    
+def caribuku():    
 
 def hapusbuku():
     import os
@@ -68,7 +66,6 @@ def hapusbuku():
         print("\n Tekan Enter untuk kembali ke menu")
         input()
         menu()
-    
 
 def daftarpeminjam():
     import os.system("CLS")
@@ -92,3 +89,5 @@ def daftarpeminjam():
     bukadata.close()
     input()
     menu()
+
+def hapuspeminjam():
