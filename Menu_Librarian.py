@@ -1,3 +1,5 @@
+import DigLib
+
 # Menu
 def menu():
     print("Pilih menu yang ingin diakses")
@@ -37,6 +39,36 @@ def daftarbuku():
     os.system("CLS")
 
 def tambahbuku():
+
+def caribuku():
+    import os
+    
+
+def hapusbuku():
+    import os
+    os.system('cls')
+    print("\n Hapus Data Buku")
+    buka_data = open("DaftarBuku.csv")
+    list_buku = []
+    hapus_buku = input("Masukkan judul buku ynag ingin dihapus : ")
+    for hapus in  buka_data:
+        if not hapus.startswith(hapus_buku):
+            list_buku.append(hapus)
+    
+    buka_data = open("DaftarBuku.csv", "w")
+    buka_data.writelines(list_buku)
+    print("Data Buku Telah Terhapus")
+    buka_data.close()
+    
+    print('\n Apakah ingin menghapus data buku lagi? (Yes/No)', end=" ")
+    hapus_data = input(" : ")
+    if hapus_data == "Yes" or hapus_data== "yes":
+        hapus_data()
+    else:
+        print("\n Tekan Enter untuk kembali ke menu")
+        input()
+        menu()
+    
 
 def daftarpeminjam():
     import os.system("CLS")
