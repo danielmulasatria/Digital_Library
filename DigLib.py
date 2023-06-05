@@ -1,4 +1,5 @@
-from tabulate import tabulate
+import os
+os.system("cls")
 
 # Login Sebagai Librarian
 def login(username,password):
@@ -15,6 +16,7 @@ def login(username,password):
         print("Login Berhasil!")
     else:
         print("Username atau Password salah!")
+        pilih()
 
 def access_librarian(options):
     global username
@@ -91,13 +93,12 @@ def pilih():
         mulai()
         access(option)
     else:
-        raise ValueError("Angka tidak valid")
-
+        print("Angka tidak valid")
+    
 pilih()
 
 
 #################################################################################################################################
 
-# Menu Librarian Pertama - Menampilkan daftar buku
-
+# Menu Librarian
 

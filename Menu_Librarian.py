@@ -15,19 +15,24 @@ def menu():
 def pilih_menu(x):
     if x==1:
         daftarbuku()
-    elif x==2:
-        tambahbuku()
-    elif x==3:
-        caribuku()
-    elif x==4:
-        hapusbuku()
-    elif x==5:
-        daftarpeminjam()
-    elif x==6:
-        hapuspeminjam()
-    elif x==7:
-        print("Anda telah keluar dari daftar menu!")
-    else:
-        print("Angka yang dimasukkan tidak valid")
+    #elif x==2:
+    #    tambahbuku()
+    #elif x==3:
+    #    caribuku()
+    #elif x==4:
+    #    hapusbuku()
+    #elif x==5:
+    #   daftarpeminjam()
+    #elif x==6:
+    #   hapuspeminjam()
+    #elif x==7:
+    #    print("Anda telah keluar dari daftar menu!")
+    #else:
+    #    print("Angka yang dimasukkan tidak valid")
 
 def daftarbuku():
+    import os
+    import csv
+    import tabulate
+    os.system("CLS")
+
