@@ -37,3 +37,26 @@ def daftarbuku():
     os.system("CLS")
 
 def tambahbuku():
+
+def daftarpeminjam():
+    import os.system("CLS")
+    print("\n\t- Daftar peminjam Buku -")
+    bukadata = open("daftarpeminjam.txt","r")
+    isi = bukadata.readlines()
+    isi.sort()
+    if len(isi) == 0:
+        print("\n[Data tidak tersedia]")
+    else :
+          print ("\n==========================================")
+          print ("NO | NAMA | JUDUL BUKU | TGL.PEMAKAIAN |")
+          print ("============================================")
+          i = 1
+          for data_buku in isi:
+                  pecah = data_buku.split(",")
+                  print("\n"+str(i)+".",end=" ")
+                  print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2])
+                  i =+ 1
+    print("\nTekan [ENTER] untuk kembali ke menu")
+    bukadata.close()
+    input()
+    menu()
