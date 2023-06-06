@@ -35,7 +35,7 @@ def daftarbuku():
     import csv
     os.system("cls")
     print("\nDaftar buku yang tersedia: ")
-    bukadata = open(("Digital_Library\DaftarBuku.csv","r"))
+    bukadata = open("Digital_Library\DaftarBuku.csv","r")
     isi = bukadata.readlines()
     isi.sort()
     if len(isi) == 0:
@@ -44,7 +44,7 @@ def daftarbuku():
         i = 1
         for data_buku in isi:
             pecah = data_buku.split(",")
-            print("\n" + str(i) + ".", end="")
+            print("\n" + str(i) + ".", end=" ")
             print(pecah[0] + "," + pecah[1] + "," + pecah[2])
             i += 1
     print('\nTekan [ENTER] untuk kembali ke menu.')
@@ -112,9 +112,9 @@ def hapusbuku():
     print("Data Buku Telah Terhapus")
     buka_data.close()
     
-    print('\n Apakah ingin menghapus data buku lagi? (Yes/No)', end=" ")
+    print('\n Apakah ingin menghapus data buku lagi? (Ya/Tidak)', end=" ")
     hapus_data = input(" : ")
-    if hapus_data == "Yes" or hapus_data== "yes":
+    if hapus_data == "Ya" or hapus_data== "ya":
         hapus_data()
     else:
         print("\n Tekan Enter untuk kembali ke menu")
@@ -161,8 +161,8 @@ def hapuspeminjam():
     print("\n[Data Peminjam Telah Terhapus]")
     bukadata.close()
     print("\nIngin menghapus data peminjam lagi? (Ya/Tidak)", end=" ")
-    hpspeminjam = input(" : ")
-    if hpspeminjam == "ya" or hpspeminjam == "Ya":
+    hapus_peminjam = input(" : ")
+    if hapus_peminjam == "ya" or hapus_peminjam == "Ya":
         hapuspeminjam()
     else:
         print("\nTekan [ENTER] untuk kembali ke menu.")
