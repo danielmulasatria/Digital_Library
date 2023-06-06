@@ -1,4 +1,5 @@
 import os
+import Menu_Librarian as menu
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -14,6 +15,7 @@ def login(username,password):
     file.close()
     if sukses:
         print("Login Berhasil!")
+        menu.menu()
     else:
         print("Username atau Password salah!")
         pilih()

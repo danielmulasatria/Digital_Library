@@ -1,5 +1,3 @@
-import DigLib
-
 # Menu
 def menu():
     print("Pilih menu yang ingin diakses")
@@ -17,28 +15,27 @@ def menu():
 def pilih_menu(x):
     if x==1:
         daftarbuku()
-    #elif x==2:
-    #    tambahbuku()
-    #elif x==3:
-    #    caribuku()
-    #elif x==4:
-    #    hapusbuku()
-    #elif x==5:
-    #   daftarpeminjam()
-    #elif x==6:
-    #   hapuspeminjam()
-    #elif x==7:
-    #    print("Anda telah keluar dari daftar menu!")
-    #else:
-    #    print("Angka yang dimasukkan tidak valid")
+    elif x==2:
+        tambahbuku()
+    elif x==3:
+        caribuku()
+    elif x==4:
+        hapusbuku()
+    elif x==5:
+       daftarpeminjam()
+    elif x==6:
+       hapuspeminjam()
+    elif x==7:
+        print("Anda telah keluar dari daftar menu!")
+    else:
+        print("Angka yang dimasukkan tidak valid")
 
 def daftarbuku():
     import os
     import csv
-    import tabulate
-    os.system("CLS")
+    os.system("cls")
     print("\nDaftar buku yang tersedia: ")
-    bukadata = open("DaftarBuku.txt","r")
+    bukadata = open(("Digital_Library\DaftarBuku.csv","r"))
     isi = bukadata.readlines()
     isi.sort()
     if len(isi) == 0:
@@ -59,12 +56,12 @@ def tambahbuku():
     import os
     os.system("CLS")
     print("\n  - Tambah Buku -")
-    print("\m Masukkan data buku baru")
+    print("\n Masukkan data buku baru")
     judul = input("Judul Buku : ")
     penulis = input("Penulis Buku : ")
     tahun = input("Tahun Terbit Buku : ")
-    bukadata = open("DaftarBuku.csv","a")
-    bukadata.writelines([judul+","+penulis+","+tahun+ "\n"])
+    bukadata = open("Digital_Library\DaftarBuku.csv","a")
+    bukadata.writelines(["\n"+judul+","+penulis+","+tahun])
     print("\n[Data Buku Berhasil Ditambahkan!]")
     bukadata.close()
 
@@ -82,7 +79,7 @@ def caribuku():
     os.system("CLS")
     print("\n              - Pencarian Buku -")
     cari = input("\nMasukkan judul buku yang ingin dicari : ")
-    bukadata = open("DaftarBuku.csv", "r")
+    bukadata = open("Digital_Library\DaftarBuku.csv", "r")
     isi = bukadata.readlines()
     isi.sort()
 
@@ -103,14 +100,14 @@ def hapusbuku():
     import os
     os.system('cls')
     print("\n Hapus Data Buku")
-    buka_data = open("DaftarBuku.csv")
+    buka_data = open("Digital_Library\DaftarBuku.csv")
     list_buku = []
     hapus_buku = input("Masukkan judul buku ynag ingin dihapus : ")
     for hapus in  buka_data:
         if not hapus.startswith(hapus_buku):
             list_buku.append(hapus)
     
-    buka_data = open("DaftarBuku.csv", "w")
+    buka_data = open("Digital_Library\DaftarBuku.csv", "w")
     buka_data.writelines(list_buku)
     print("Data Buku Telah Terhapus")
     buka_data.close()
@@ -128,15 +125,15 @@ def daftarpeminjam():
     import os
     os.system("cls")
     print("\n\t- Daftar peminjam Buku -")
-    bukadata = open("daftarpeminjam.txt","r")
+    bukadata = open("Digital_Library\DaftarPeminjam.csv","r")
     isi = bukadata.readlines()
     isi.sort()
     if len(isi) == 0:
         print("\n[Data tidak tersedia]")
     else :
-          print ("\n==========================================")
-          print ("NO | NAMA | JUDUL BUKU | TGL.PEMAKAIAN |")
-          print ("============================================")
+          print ("\n=================================================")
+          print ("NO | NAMA | JUDUL BUKU | TGL.PEMAKAIAN | JAMINAN |")
+          print ("===================================================")
           i = 1
           for data_buku in isi:
                   pecah = data_buku.split(",")
@@ -152,14 +149,14 @@ def hapuspeminjam():
     import os
     os.system("CLS")
     print("\n-  Hapus Data Peminjam Buku  -")
-    bukadata = open("daftarpeminjam.txt")
+    bukadata = open("Digital_Library\DaftarPeminjam.csv")
     output = []
     str = input("\nMasukkan Nama Peminjam yang Ingin Dihapus: ")
     for hps in bukadata:
         if not hps.startswith(str):
             output.append(hps)
 
-    bukadata = open("daftarpeminjam.txt","w")
+    bukadata = open("Digital_Library\DaftarPeminjam.csv","w")
     bukadata.writelines(output)
     print("\n[Data Peminjam Telah Terhapus]")
     bukadata.close()
