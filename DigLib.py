@@ -1,5 +1,4 @@
 import os
-import Menu_Librarian
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -70,6 +69,7 @@ def access(option):
         password = input("Masukkan Password")
         daftar(username, password)
         print("Akun berhasil dibuat, silahkan masuk")
+        
 
 def mulai():
     global option
@@ -102,7 +102,3 @@ pilih()
 #################################################################################################################################
 
 # Menu Librarian
-
-from Menu_Librarian import*
-if login() == True:
-    menu()

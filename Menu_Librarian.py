@@ -108,7 +108,8 @@ def hapusbuku():
         menu()
 
 def daftarpeminjam():
-    import os.system("CLS")
+    import os
+    os.system("cls")
     print("\n\t- Daftar peminjam Buku -")
     bukadata = open("daftarpeminjam.txt","r")
     isi = bukadata.readlines()
