@@ -40,7 +40,27 @@ def daftarbuku():
 
 def tambahbuku():
 
-def caribuku():    
+def caribuku():  
+    import os
+    os.system("CLS")
+    print("\n              - Pencarian Buku -")
+    cari = input("\nMasukkan judul buku yang ingin dicari : ")
+    bukadata = open("DaftarBuku.csv", "r")
+    isi = bukadata.readlines()
+    isi.sort()
+
+    i=1
+    for data_buku in isi:
+        pecah = data_buku.split(",")
+        if pecah[0] == cari:
+            print("\n"+pecah[0]+","+pecah[1]+","+pecah[2], end=" ")
+            i += 1
+
+    print("\n\nTekan [ENTER] untuk kembali ke menu.")
+    bukadata.close()
+    input()
+    menu()
+  
 
 def hapusbuku():
     import os
