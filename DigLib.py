@@ -1,4 +1,5 @@
 import os
+import Menu_Librarian
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -102,3 +103,6 @@ pilih()
 
 # Menu Librarian
 
+from Menu_Librarian import*
+if login() == True:
+    menu()
