@@ -33,29 +33,35 @@ def pilih_menu(x):
 def daftarbuku():
     import os
     import csv
+    import tabulate
+    
     os.system("cls")
-    print("\nDaftar buku yang tersedia: ")
-    bukadata = open("Digital_Library\DaftarBuku.csv","r")
-    isi = bukadata.readlines()
-    isi.sort()
-    if len(isi) == 0:
-        print("\n[Data tidak tersedia]")
+    print("\n Daftar buku: ")
+    buka = open("Digital_Library\DaftarBuku.csv","r")
+    content = buka.readlines()
+    content.sort()
+    if len(content) == 0:
+        print("\n Data Buku KOSONG")
     else:
         i = 1
-        for data_buku in isi:
-            pecah = data_buku.split(",")
+        for daftar_buku in content:
+            pecah = daftar_buku.split(",")
             print("\n" + str(i) + ".", end=" ")
             print(pecah[0] + "," + pecah[1] + "," + pecah[2])
+            #print(tabulate.tabulate(pecah, headers=['Judul', 'Penulis', 'Tahun'], tablefmt="orgtbl"))
             i += 1
-    print('\nTekan [ENTER] untuk kembali ke menu.')
-    bukadata.close()
+    print('\nTekan ENTER untuk kembali ke menu.')
+    buka.close()
     input()
     menu()
+
+    
+        
 
 def tambahbuku():
     import os
     os.system("CLS")
-    print("\n  - Tambah Buku -")
+    print("\n   Tambah Buku ")
     print("\n Masukkan data buku baru")
     judul = input("Judul Buku : ")
     penulis = input("Penulis Buku : ")
@@ -70,14 +76,14 @@ def tambahbuku():
     if tambahdata == "ya" or tambahdata == "Ya":
         tambahdata()
     else :
-        print("\nTekan [ENTER] untuk kembali ke menu")
+        print("\nTekan ENTER untuk kembali ke menu")
         input()
         menu()
 
 def caribuku():  
     import os
     os.system("CLS")
-    print("\n              - Pencarian Buku -")
+    print("\n              CARI BUKU")
     cari = input("\nMasukkan judul buku yang ingin dicari : ")
     bukadata = open("Digital_Library\DaftarBuku.csv", "r")
     isi = bukadata.readlines()
@@ -90,7 +96,7 @@ def caribuku():
             print("\n"+pecah[0]+","+pecah[1]+","+pecah[2], end=" ")
             i += 1
 
-    print("\n\nTekan [ENTER] untuk kembali ke menu.")
+    print("\n\nTekan ENTER untuk kembali ke menu.")
     bukadata.close()
     input()
     menu()
@@ -117,7 +123,7 @@ def hapusbuku():
     if hapus_data == "Ya" or hapus_data== "ya":
         hapus_data()
     else:
-        print("\n Tekan Enter untuk kembali ke menu")
+        print("\n Tekan ENTER untuk kembali ke menu")
         input()
         menu()
 
@@ -140,7 +146,7 @@ def daftarpeminjam():
                   print("\n"+str(i)+".",end=" ")
                   print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2])
                   i =+ 1
-    print("\nTekan [ENTER] untuk kembali ke menu")
+    print("\nTekan ENTER untuk kembali ke menu")
     bukadata.close()
     input()
     menu()
@@ -165,6 +171,6 @@ def hapuspeminjam():
     if hapus_peminjam == "ya" or hapus_peminjam == "Ya":
         hapuspeminjam()
     else:
-        print("\nTekan [ENTER] untuk kembali ke menu.")
+        print("\nTekan ENTER untuk kembali ke menu.")
         input()
         menu()

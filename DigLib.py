@@ -4,6 +4,8 @@ os.system("cls")
 
 # Login Sebagai Librarian
 def login(username,password):
+    import os
+    os.system("cls")
     sukses = False
     file = open("Digital_Library\DataLibrarian.csv", "r")
     for i in file:
@@ -15,25 +17,29 @@ def login(username,password):
     file.close()
     if sukses:
         print("Login Berhasil!")
+        os.system('CLS')
+        print("Halo, selamat datang", username)
         menu.menu()
     else:
         print("Username atau Password salah!")
         pilih()
 
 def access_librarian(options):
+    os.system("cls")
     global username
     if options == "Ya":
-        username = input("Masukkan Username")
-        password = input("Masukkan Password")
+        username = input("Masukkan Username:  ")
+        password = input("Masukkan Password:  ")
         login(username, password)
     else:
         print("Username atau Password anda salah!")
         access_librarian(options)
     
 def start():
+    os.system("cls")
     global options
     print("Selamat datang!")
-    options = input("Ketik 'Ya' apabila ingin masuk")
+    options = input("Ketik 'Ya' apabila ingin masuk: ")
     if options != "Ya":
         start()
 
@@ -42,6 +48,7 @@ def start():
 
 # Login Sebagai Pengunjung
 def masuk(username,password):
+    os.system("cls")
     sukses = False
     file = open("Digital_Library\DataAkun.csv", "r")
     for i in file:
@@ -57,10 +64,12 @@ def masuk(username,password):
         print("Username atau Password salah! Silahkan buat akun")
         
 def daftar(username, password):
+    os.system("cls")
     file = open("Digital_Library\DataAkun.csv", "a")
     file.write("\n"+username+","+password)
 
 def access(option):
+    os.system("cls")
     global username
     if option == "masuk":
         username = input("Masukkan Username")
@@ -75,6 +84,7 @@ def access(option):
         
 
 def mulai():
+    os.system("cls")
     global option
     print("Selamat datang!")
     print("Ketik 'masuk' jika sudah punya akun")
@@ -87,9 +97,10 @@ def mulai():
 
 # Login Utama
 def pilih():
-    print("Selamat datang di Digital Library")
-    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung")
-    angka = int(input("Masukkan angka"))
+    os.system("cls")
+    print("Selamat datang di Digital Library\n")
+    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
+    angka = int(input("Masukkan kode angka: "))
     if angka==1:
         start()
         access_librarian(options)
@@ -97,6 +108,7 @@ def pilih():
         mulai()
         access(option)
     else:
-        print("Angka tidak valid")
+        os.system('cls')
+        print("Angka yang dimasukkan tidak valid")
     
 pilih()
