@@ -37,6 +37,23 @@ def daftarbuku():
     import csv
     import tabulate
     os.system("CLS")
+    print("\nDaftar buku yang tersedia: ")
+    bukadata = open("DaftarBuku.txt","r")
+    isi = bukadata.readlines()
+    isi.sort()
+    if len(isi) == 0:
+        print("\n[Data tidak tersedia]")
+    else:
+        i = 1
+        for data_buku in isi:
+            pecah = data_buku.split(",")
+            print("\n" + str(i) + ".", end="")
+            print(pecah[0] + "," + pecah[1] + "," + pecah[2])
+            i += 1
+    print('\nTekan [ENTER] untuk kembali ke menu.')
+    bukadata.close()
+    input()
+    menu()
 
 def tambahbuku():
     import os
@@ -132,3 +149,25 @@ def daftarpeminjam():
     menu()
 
 def hapuspeminjam():
+    import os
+    os.system("CLS")
+    print("\n-  Hapus Data Peminjam Buku  -")
+    bukadata = open("daftarpeminjam.txt")
+    output = []
+    str = input("\nMasukkan Nama Peminjam yang Ingin Dihapus: ")
+    for hps in bukadata:
+        if not hps.startswith(str):
+            output.append(hps)
+
+    bukadata = open("daftarpeminjam.txt","w")
+    bukadata.writelines(output)
+    print("\n[Data Peminjam Telah Terhapus]")
+    bukadata.close()
+    print("\nIngin menghapus data peminjam lagi? (Ya/Tidak)", end=" ")
+    hpspeminjam = input(" : ")
+    if hpspeminjam == "ya" or hpspeminjam == "Ya":
+        hapuspeminjam()
+    else:
+        print("\nTekan [ENTER] untuk kembali ke menu.")
+        input()
+        menu()
