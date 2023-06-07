@@ -41,7 +41,7 @@ def start():
     print("Selamat datang!")
     options = input("Ketik 'Ya' apabila ingin masuk: ")
     if options != "Ya":
-        start()
+        pilih()
 
         
 ###################################################################################################################################
@@ -69,7 +69,6 @@ def daftar(username, password):
     file.write("\n"+username+","+password)
 
 def access(option):
-    os.system("cls")
     global username
     if option == "masuk":
         username = input("Masukkan Username")

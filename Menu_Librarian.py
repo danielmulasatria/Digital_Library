@@ -37,26 +37,21 @@ def daftarbuku():
     
     os.system("cls")
     print("\n Daftar buku: ")
-    buka = open("Digital_Library\DaftarBuku.csv","r")
-    content = buka.readlines()
-    content.sort()
-    if len(content) == 0:
-        print("\n Data Buku KOSONG")
-    else:
-        i = 1
-        for daftar_buku in content:
-            pecah = daftar_buku.split(",")
-            print("\n" + str(i) + ".", end=" ")
-            print(pecah[0] + "," + pecah[1] + "," + pecah[2])
-            #print(tabulate.tabulate(pecah, headers=['Judul', 'Penulis', 'Tahun'], tablefmt="orgtbl"))
-            i += 1
+    data = []
+    with open("Digital_Library\DaftarBuku.csv","r") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            data.append(row)
+        if len(data) == 0:
+            print("\n Data Buku KOSONG")
+        else:
+            headers="firstrow"
+            print(tabulate.tabulate(data, headers, tablefmt="orgtbl"))
     print('\nTekan ENTER untuk kembali ke menu.')
-    buka.close()
+    file.close()
     input()
     menu()
 
-    
-        
 
 def tambahbuku():
     import os
