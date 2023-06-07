@@ -99,11 +99,11 @@ def pilih():
     os.system("cls")
     print("Selamat datang di Digital Library\n")
     print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
-    angka = int(input("Masukkan kode angka: "))
-    if angka==1:
+    angka = input("Masukkan kode angka: ")
+    if angka=='1':
         start()
         access_librarian(options)
-    elif angka==2:
+    elif angka=='2':
         mulai()
         access(option)
     else:
