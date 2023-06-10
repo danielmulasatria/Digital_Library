@@ -1,4 +1,5 @@
 import os
+import csv
 import Menu_Librarian as menu
 os.system("cls")
 
@@ -65,23 +66,36 @@ def masuk(username,password):
         
 def daftar(username, password):
     os.system("cls")
+    while check_existing_username(username):
+        print("Username sudah ada. Silakan buat username lain.")
+        username = input("Masukkan username baru: ")
+        password = input("Masukkan password baru: ")
     file = open("Digital_Library\DataAkun.csv", "a")
     file.write("\n"+username+","+password)
 
 def access(option):
+    os.system('cls')
     global username
     if option == "masuk":
-        username = input("Masukkan Username")
-        password = input("Masukkan Password")
+        username = input("Masukkan Username: ")
+        password = input("Masukkan Password: ")
         masuk(username, password)
     else:
         print("Masukkan Username dan Password yang baru")
-        username = input("Masukkan Username")
-        password = input("Masukkan Password")
+        username = input("Masukkan Username: ")
+        password = input("Masukkan Password: ")
         daftar(username, password)
         print("Akun berhasil dibuat, silahkan masuk")
-        
 
+def check_existing_username(username):
+    os.system('cls')
+    with open('Digital_Library\DataAkun.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == username:
+                return True
+    return False
+        
 def mulai():
     os.system("cls")
     global option
@@ -91,7 +105,6 @@ def mulai():
     option = input("Silahkan masukkan (masuk/daftar): ")
     if option !="masuk" and option !="daftar":
         mulai()
-
 ###################################################################################################################################
 
 # Login Utama
