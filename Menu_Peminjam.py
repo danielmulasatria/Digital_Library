@@ -79,3 +79,49 @@ def kembalikan_buku():
       s = 30000 * jp
       print('Lama Peminjaman', r, 'Hari Dengan Biaya Rp.', s, 'Kembali Pada Tanggal', tm, 
             'Bulan, bulan[bm]', 'Tahun', [thn])
+
+listpilih1 = []
+listkode = []
+def buku_hilang():
+    print("SESUAI DENGAN KETENTUAN YANG BERLAKU")
+    print("MAKA AKAN DIKENAKAN DENDA BERUPA")
+    print("------------------------------------")
+    print("1. MEMBELI BUKU DENGAN JUDUL YANG SAMA.")
+    print("2. MENGGANTI DENGAN NOMINAL BUKU YANG HILANG.")
+    garis()
+    pilih1 = input("Mana yang Akan Dipilih? [1/2] = ")
+    listpilih1.append(pilih1)
+    kode = input("Judul Buku yang Dihilangkan (Kategori) = ")
+    listkode.append(kode)
+    if pilih1 == "1":
+        print("Buku Telah Diterima.")
+        print("\n")
+    else:
+        listharga = []
+        listjumlah = []
+        listtotal = []
+        totalitem = 0
+        totalkeseluruhan = 0
+        d = int(input("Data Buku yang Hilang = "))
+        print("\n")
+        for i in range(d):
+            jumlah = int(input("Masukkan Jumlah BuKU yang Hilang = "))
+            listjumlah.append(jumlah)
+            harga = int(input("Harga Buku yang Hilang = "))
+            listharga.append(harga)
+            total1 = listharga[i]*listjumlah[i]
+            listtotal.append(total1)
+        print("-------------------------------------------------------------")
+        print("QTY                  Harga                  Total")
+        print("-------------------------------------------------------------")
+        for i in range(d):
+            print("%d                Rp. %d                 Rp. %d"%(listjumlah[i],listharga[i],listtotal[i]))
+            totalitem = totalitem + listjumlah[i]
+            totalkeseluruhan = totalkeseluruhan + listtotal[i]
+        print("Total Item                    = %d"%totalitem)
+        print("Total Keseluruhan             = Rp. %d"%totalkeseluruhan)
+        bayar = int(input("Pembayaran Tunai               = "))
+        kembali = bayar - totalkeseluruhan
+        print("Kembali                       = ", kembali)
+        print("Mari Jaga Buku Kita.")
+        print("\n")
