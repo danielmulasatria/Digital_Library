@@ -1,3 +1,18 @@
+DaftarPeminjam()
+print("")
+print("|--------------------CATATAN PENTING--------------------|")
+print("|---Akan Dikenakan Denda Jika Terlambat Mengembalikan---|")
+print("|-------Dan Jika Menghilangkan Buku Yang Dipinjam-------|")
+print("|----------------------TERIMAKASIH----------------------|")
+garis()
+print("Masukkan Data Peminjaman Buku ")
+buku=[]
+listpilih=[]
+listjp=[]
+listbuku=[]
+listhp=[]
+listst=[]
+
 def tampilan_menu():
     try:
         print("[1] Pinjam buku")
@@ -55,3 +70,12 @@ def kembalikan_buku():
          print('Lama Peminjaman', r,'Hari Dengan Biaya RP.', s,'Kembali Pada Tanggal', tm, 'Bulan', bulan[bm],'Tahun', [thm])
    else:
       print("Terima Kasih Telah Menjaga Buku Dengan Baik")
+      tgl = tm - tp 
+      bln = bm - bp 
+      thn = thm - thp
+      p = bln * 30
+      q = thn * 365
+      r = q + p + tgl
+      s = 30000 * jp
+      print('Lama Peminjaman', r, 'Hari Dengan Biaya Rp.', s, 'Kembali Pada Tanggal', tm, 
+            'Bulan, bulan[bm]', 'Tahun', [thn])
