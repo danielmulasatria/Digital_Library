@@ -1,18 +1,3 @@
-DaftarPeminjam()
-print("")
-print("|--------------------CATATAN PENTING--------------------|")
-print("|---Akan Dikenakan Denda Jika Terlambat Mengembalikan---|")
-print("|-------Dan Jika Menghilangkan Buku Yang Dipinjam-------|")
-print("|----------------------TERIMAKASIH----------------------|")
-garis()
-print("Masukkan Data Peminjaman Buku ")
-buku=[]
-listpilih=[]
-listjp=[]
-listbuku=[]
-listhp=[]
-listst=[]
-
 def tampilan_menu():
     try:
         print("[1] Pinjam buku")
@@ -82,6 +67,7 @@ def kembalikan_buku():
 
 listpilih1 = []
 listkode = []
+
 def buku_hilang():
     print("SESUAI DENGAN KETENTUAN YANG BERLAKU")
     print("MAKA AKAN DIKENAKAN DENDA BERUPA")
@@ -125,3 +111,18 @@ def buku_hilang():
         print("Kembali                       = ", kembali)
         print("Mari Jaga Buku Kita.")
         print("\n")
+
+DaftarPeminjam()
+print("")
+print("|--------------------CATATAN PENTING--------------------|")
+print("|---Akan Dikenakan Denda Jika Terlambat Mengembalikan---|")
+print("|-------Dan Jika Menghilangkan Buku Yang Dipinjam-------|")
+print("|----------------------TERIMAKASIH----------------------|")
+garis()
+print("Masukkan Data Peminjaman Buku ")
+buku=[]
+listpilih=[]
+listjp=[]
+listbuku=[]
+listhp=[]
+listst=[]
