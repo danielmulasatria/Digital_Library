@@ -21,3 +21,37 @@ def tampilan_menu():
 if __name__=="__main__":
     while(True):
         tampilan_menu()
+
+def kembalikan_buku():
+   jp = int(input("Banyaknya Buku Yang dipinjam = "))
+   bulan = {
+      1:'Januari',2:'Februari',3:'Maret',4:'April',5:'Mei',6:'Juni',7:'Juli',8:'Agustus',9:'September',10:'Oktober',11:'November',12:'Desember'
+   }
+   tp = int(input("Tanggal Pinjam = "))
+   bp = int(input("Bulan Pinjam = "))
+   thp = int(input("Tahun Pinjam = "))
+   print("\n")
+   print("Masukkan Data Pengembalian Buku")
+   tm = int(input("Tanggal Pengembalian Buku = "))
+   bm = int(input("Bulan Pengembalian Buku = "))
+   thm = int(input("Tahun Pengembalian Buku = "))
+   t = input("Apakah Ada Kerusakan Pada Buku [Y/T] ?")
+   if (t=="Y") or (t=="y"):
+      print("Denda Kerusakan Buku = Rp.10000")
+      tgl = tm-tp
+      bln = bm-bp
+      thn = thm-thp
+      p = bln*30
+      q = thn*365
+      r = q+p+tgl
+      if r>=35:
+        s=(jp*35000)+10000+5000
+        print('Lama Peminjaman', r,'Hari Dengan Biaya RP.', s,'Kembali Pada Tanggal', tm, 'Bulan', bulan[bm],'Tahun', [thm])
+      elif r>=31:
+         s = (jp*35000) + 10000 + 2000
+         print('Lama Peminjaman', r,'Hari Dengan Biaya RP.', s,'Kembali Pada Tanggal', tm, 'Bulan', bulan[bm],'Tahun', [thm])
+      else:
+         s = (jp * 35000) + 10000
+         print('Lama Peminjaman', r,'Hari Dengan Biaya RP.', s,'Kembali Pada Tanggal', tm, 'Bulan', bulan[bm],'Tahun', [thm])
+   else:
+      print("Terima Kasih Telah Menjaga Buku Dengan Baik")
