@@ -22,6 +22,32 @@ if __name__=="__main__":
     while(True):
         tampilan_menu()
 
+def pinjaman_buku():
+    j = int(input("Berapa banyak buku yang dipinjam?"))
+    print("\n")
+    for i in range (j):
+        buku = input("Masukkan judul buku yang dipinjam = ")
+        DaftarBuku.append(buku)
+        jp = int(input("Jumlah buku yang akan dipinjam = "))
+        listjp.append(jp)
+        hp = int(input("Harga buku yang dipinjam = "))
+        listhp.append(hp)
+        st = listjp[i]*listhp[i]
+        listst.append(st)
+    garis()
+    print("Jumlah Buku             Harga            Subtotal")
+    garis()
+    for i in range (j):
+        print("Buku yang dipinjam = ",(DaftarBuku[i]))
+        print("%d                   Rp.%d             Rp.%d"%(listjp[i],listhp[i],listst[i]))
+        print("\n")
+        print("--------------------MASA PEMINJAMAN BUKU ADALAH SELAMA 1 BULAN---------------------")
+        print("---JIKA TERLAMBAT MENGEMBALIKAN BUKU MAKA 5 HARI PERTAMA DIKENAKAN DENDA RP.2000---")
+        print("-------------JIKA LEBIH DARI 5 HARI MAKA AKAN DIKENAKAN DENDA RP.5000--------------")
+        print("------------DAN JIKA BUKU YANG DIPINJAM HILANG MAKA AKAN DIKENAKAN SANKSI----------")
+        garis()
+        print("\n")
+
 def kembalikan_buku():
    jp = int(input("Banyaknya Buku Yang dipinjam = "))
    bulan = {
