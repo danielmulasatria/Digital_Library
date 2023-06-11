@@ -28,13 +28,27 @@ def tampilan_menu():
 if __name__=="__main__":
     while(True):
         tampilan_menu()
+        
+print("")
+print("|--------------------CATATAN PENTING--------------------|")
+print("|---Akan Dikenakan Denda Jika Terlambat Mengembalikan---|")
+print("|-------Dan Jika Menghilangkan Buku Yang Dipinjam-------|")
+print("|----------------------TERIMAKASIH----------------------|")
+garis()
+print("Masukkan Data Peminjaman Buku ")
+buku=[]
+listpilih=[]
+listjp=[]
+listbuku=[]
+listhp=[]
+listst=[]
 
 def pinjaman_buku():
-    j = int(input("Berapa banyak buku yang dipinjam?"))
+    a = int(input("Berapa banyak buku yang dipinjam?"))
     print("\n")
-    for i in range (j):
+    for i in range (a):
         buku = input("Masukkan judul buku yang dipinjam = ")
-        DaftarBuku.append(buku)
+        listbuku.append(buku)
         jp = int(input("Jumlah buku yang akan dipinjam = "))
         listjp.append(jp)
         hp = int(input("Harga buku yang dipinjam = "))
@@ -44,7 +58,7 @@ def pinjaman_buku():
     garis()
     print("Jumlah Buku             Harga            Subtotal")
     garis()
-    for i in range (j):
+    for i in range (a):
         print("Buku yang dipinjam = ",(DaftarBuku[i]))
         print("%d                   Rp.%d             Rp.%d"%(listjp[i],listhp[i],listst[i]))
         print("\n")
@@ -144,18 +158,3 @@ def buku_hilang():
         print("Kembali                       = ", kembali)
         print("Mari Jaga Buku Kita.")
         print("\n")
-
-DaftarPeminjam()
-print("")
-print("|--------------------CATATAN PENTING--------------------|")
-print("|---Akan Dikenakan Denda Jika Terlambat Mengembalikan---|")
-print("|-------Dan Jika Menghilangkan Buku Yang Dipinjam-------|")
-print("|----------------------TERIMAKASIH----------------------|")
-garis()
-print("Masukkan Data Peminjaman Buku ")
-buku=[]
-listpilih=[]
-listjp=[]
-listbuku=[]
-listhp=[]
-listst=[]
