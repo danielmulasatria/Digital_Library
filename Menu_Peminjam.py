@@ -1,7 +1,7 @@
 def garis():
     print("-----------------------------------------------------------------")
 print ("DIGITAL LIBRARY 07".center(75))
-print("Teknik Industri Universitas Negeri sebelas Maret".center(75))
+print("Teknik Industri Universitas Negeri Sebelas Maret".center(75))
 garis()
 
 
