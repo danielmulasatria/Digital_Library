@@ -1,3 +1,10 @@
+def garis():
+    print("-----------------------------------------------------------------")
+print ("DIGITAL LIBRARY 07".center(75))
+print("Teknik Industri Universitas Negeri sebelas Maret".center(75))
+garis()
+
+
 def tampilan_menu():
     try:
         print("[1] Pinjam buku")
@@ -7,7 +14,7 @@ def tampilan_menu():
         akses_menu = input("Pilih kode menu yang ingin diakses: \n")
         
         if akses_menu == "1":
-            peminjaman_buku()
+            pinjaman_buku()
         if akses_menu == "2":
             kembalikan_buku()
         if akses_menu == "3":
