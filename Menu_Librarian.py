@@ -46,7 +46,7 @@ def daftarbuku():
             print("\n Data Buku KOSONG")
         else:
             headers="firstrow"
-            print(tabulate.tabulate(data, headers, tablefmt="orgtbl"))
+            print(tabulate.tabulate(data, headers, tablefmt="grid"))
     print('\nTekan ENTER untuk kembali ke menu.')
     file.close()
     input()
@@ -69,7 +69,7 @@ def tambahbuku():
     print("\nIngin menambahkan buku lagi? (Ya/Tidak)", end=" ")
     tambahdata = input(" : ")
     if tambahdata == "ya" or tambahdata == "Ya":
-        tambahdata()
+        tambahbuku()
     else :
         print("\nTekan ENTER untuk kembali ke menu")
         input()
@@ -103,7 +103,7 @@ def hapusbuku():
     print("\n Hapus Data Buku")
     buka_data = open("Digital_Library\DaftarBuku.csv")
     list_buku = []
-    hapus_buku = input("Masukkan judul buku ynag ingin dihapus : ")
+    hapus_buku = input("Masukkan judul buku yang ingin dihapus : ")
     for hapus in  buka_data:
         if not hapus.startswith(hapus_buku):
             list_buku.append(hapus)

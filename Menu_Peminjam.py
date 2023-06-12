@@ -1,3 +1,6 @@
+import os
+os.system ("cls")
+
 def garis():
     print("-----------------------------------------------------------------")
 print ("DIGITAL LIBRARY 07".center(75))
@@ -44,6 +47,8 @@ listhp=[]
 listst=[]
 
 def pinjaman_buku():
+    import os 
+    os.system('cls')
     a = int(input("Berapa banyak buku yang dipinjam?"))
     print("\n")
     for i in range (a):
@@ -59,7 +64,7 @@ def pinjaman_buku():
     print("Jumlah Buku             Harga            Subtotal")
     garis()
     for i in range (a):
-        print("Buku yang dipinjam = ",(DaftarBuku[i]))
+        print("Buku yang dipinjam = ",(listbuku[i]))
         print("%d                   Rp.%d             Rp.%d"%(listjp[i],listhp[i],listst[i]))
         print("\n")
         print("--------------------MASA PEMINJAMAN BUKU ADALAH SELAMA 1 BULAN---------------------")
