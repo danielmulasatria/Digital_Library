@@ -61,8 +61,9 @@ def tambahbuku():
     judul = input("Judul Buku : ")
     penulis = input("Penulis Buku : ")
     tahun = input("Tahun Terbit Buku : ")
+    jumlah = input("Jumlah buku: ")
     bukadata = open("Digital_Library\DaftarBuku.csv","a")
-    bukadata.writelines(["\n"+judul+","+penulis+","+tahun])
+    bukadata.writelines(["\n"+judul+","+penulis+","+tahun+","+jumlah])
     print("\n[Data Buku Berhasil Ditambahkan!]")
     bukadata.close()
 
@@ -88,7 +89,7 @@ def caribuku():
     for data_buku in isi:
         pecah = data_buku.split(",")
         if pecah[0] == cari:
-            print("\n"+pecah[0]+","+pecah[1]+","+pecah[2], end=" ")
+            print("\n"+pecah[0]+","+pecah[1]+","+pecah[2]+","+pecah[3], end=" ")
             i += 1
 
     print("\n\nTekan ENTER untuk kembali ke menu.")

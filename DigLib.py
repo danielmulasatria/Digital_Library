@@ -1,6 +1,7 @@
 import os
 import csv
 import Menu_Librarian as menu
+import Peminjam as p
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -61,6 +62,7 @@ def masuk(username,password):
     file.close()
     if sukses:
         print("Login Berhasil!")
+        p.main()
     else:
         print("Username atau Password salah! Silahkan buat akun")
         
