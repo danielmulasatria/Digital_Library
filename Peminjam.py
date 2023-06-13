@@ -32,28 +32,48 @@ def tampilkan_buku(buku):
     for i, buku in enumerate(buku):
         print(f"ID: {i+1}, Judul: {buku['judul']}, Pengarang: {buku['pengarang']}, Tahun Terbit: {buku['tahun terbit']}, Tersedia: {buku['tersedia']}")
 
-def meminjam_buku(buku, id):
+def meminjam_buku(buku, id, peminjam):
     os.system('cls')
     if id >= 0 and id < len(buku):
         if buku[id]['tersedia'] > 0:
             buku[id]['tersedia'] -= 1
-            print(f"Buku '{buku[id]['judul']}' telah dipinjam.")
+            judul_buku = buku[id]['judul']
+            nama_peminjam = input("Masukkan nama Anda: ")
+            waktu_peminjaman = datetime.date.today()
+            
+            with open('Digital_Library\DaftarPeminjam.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([nama_peminjam, judul_buku, waktu_peminjaman])
+                
+            peminjam[judul_buku] = {'nama': nama_peminjam, 'waktu': waktu_peminjaman}
+            print(f"Buku '{judul_buku}' telah berhasil Anda pinjam.")
         else:
             print("Maaf, buku ini sedang tidak tersedia.")
     else:
         print("Indeks buku tidak valid.")
 
-def kembalikan_buku(buku, id):
+def kembalikan_buku(buku, id, peminjam):
+    import csv
     os.system('cls')
     if id >= 0 and id < len(buku):
-        buku[id]['tersedia'] += 1
-        print(f"Buku '{buku[id]['judul']}' telah dikembalikan.")
+        judul_buku = buku[id]['judul']
+        if judul_buku in peminjam:
+            buku[id]['tersedia'] += 1
+            nama_peminjam = peminjam[judul_buku]['nama']
+            waktu_peminjaman = peminjam[judul_buku]['waktu']
+            del peminjam[judul_buku]
+            print(f"Buku '{judul_buku}' telah dikembalikan. Terima kasih.")
+        else:
+            print("Buku ini belum dipinjam.")
     else:
         print("Indeks buku tidak valid.")
+
+
 
 def main():
     
     daftar_buku = daftarbuku('Digital_Library\DaftarBuku.csv')
+    peminjam = {}
 
     while True:
         print("\n--------------Menu Digital Library--------------")
@@ -68,12 +88,15 @@ def main():
             tampilkan_buku(daftar_buku)
         elif pilih == '2':
             id_buku = int(input("Masukkan indeks buku: ")) - 1
-            meminjam_buku(daftar_buku, id_buku)
+            meminjam_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '3':
             id_buku = int(input("Masukkan indeks buku: ")) - 1
-            kembalikan_buku(daftar_buku, id_buku)
+            kembalikan_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '4':
             perubahan('Digital_Library\DaftarBuku.csv', daftar_buku)
             break
         else:
             print("Pilihan tidak valid. Silakan coba lagi.")
+
+if __name__ == '__main__':
+    main()

@@ -89,7 +89,7 @@ def caribuku():
     for data_buku in isi:
         pecah = data_buku.split(",")
         if pecah[0] == cari:
-            print("\n"+pecah[0]+","+pecah[1]+","+pecah[2]+","+pecah[3], end=" ")
+            print("\nJudul: "+pecah[0]+"\nPenulis: "+pecah[1]+"\nTahun Terbit: "+pecah[2]+"\nBuku yang Tersedia: "+pecah[3], end=" ")
             i += 1
 
     print("\n\nTekan ENTER untuk kembali ke menu.")
@@ -134,14 +134,14 @@ def daftarpeminjam():
         print("\n[Data tidak tersedia]")
     else :
           print ("\n=================================================")
-          print ("NO | NAMA | JUDUL BUKU | TGL.PEMAKAIAN | JAMINAN |")
+          print ("| NAMA | JUDUL BUKU | TGL.PEMAKAIAN | JAMINAN |")
           print ("===================================================")
-          i = 1
+          #i = 1
           for data_buku in isi:
                   pecah = data_buku.split(",")
-                  print("\n"+str(i)+".",end=" ")
+                  #print("\n"+str(i)+".",end=" ")
                   print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2])
-                  i =+ 1
+                  #i =+ 1
     print("\nTekan ENTER untuk kembali ke menu")
     bukadata.close()
     input()
@@ -170,3 +170,6 @@ def hapuspeminjam():
         print("\nTekan ENTER untuk kembali ke menu.")
         input()
         menu()
+        
+if __name__ == '__main__':
+    menu()
