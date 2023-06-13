@@ -64,7 +64,7 @@ def masuk(username,password):
         print("Login Berhasil!")
         p.main()
     else:
-        print("Username atau Password salah! Silahkan buat akun")
+        print("Username atau Password salah! Silahkan buat akun") 
         
 def daftar(username, password):
     os.system("cls")
@@ -97,7 +97,7 @@ def check_existing_username(username):
             if row[0] == username:
                 return True
     return False
-        
+
 def mulai():
     os.system("cls")
     global option
@@ -111,18 +111,22 @@ def mulai():
 
 # Login Utama
 def pilih():
-    os.system("cls")
-    print("Selamat datang di Digital Library\n")
-    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
-    angka = input("Masukkan kode angka: ")
-    if angka=='1':
-        start()
-        access_librarian(options)
-    elif angka=='2':
-        mulai()
-        access(option)
-    else:
+    try:
+        os.system("cls")
+        print("Selamat datang di Digital Library\n")
+        print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
+        angka = input("Masukkan kode angka: ")
+        if angka=='1':
+            start()
+            access_librarian(options)
+        elif angka=='2':
+            mulai()
+            access(option)
+        else:
+            os.system('cls')
+            raise ValueError("Kode yang dimasukkan tidak valid")
+    except Exception as e:
         os.system('cls')
-        print("Angka yang dimasukkan tidak valid")
+        print("Terjadi kesalahan: ", str(e))
     
 pilih()

@@ -28,7 +28,7 @@ def pilih_menu(x):
     elif x==7:
         print("Anda telah keluar dari daftar menu!")
     else:
-        print("Angka yang dimasukkan tidak valid")
+        raise ValueError("Kode yang dimasukkan tidak valid")
 
 def daftarbuku():
     import os
@@ -126,7 +126,7 @@ def hapusbuku():
 def daftarpeminjam():
     import os
     os.system("cls")
-    print("\n\t- Daftar peminjam Buku -")
+    print("\n\t- Daftar Peminjam Buku -")
     bukadata = open("Digital_Library\DaftarPeminjam.csv","r")
     isi = bukadata.readlines()
     isi.sort()
