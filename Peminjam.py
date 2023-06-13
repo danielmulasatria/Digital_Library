@@ -1,8 +1,10 @@
 import csv
+import os
 import datetime
 import Login 
 
 def daftarbuku(filename):
+    os.system('cls')
     buku = []
     with open(filename, 'r') as file:
         reader = csv.reader(file)
@@ -18,17 +20,20 @@ def daftarbuku(filename):
     return buku
 
 def perubahan(filename, buku):
+    os.system('cls')
     with open(filename, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['Judul', 'Pengarang', 'Tahun Terbit', 'Tersedia'])
+        write = csv.writer(file)
+        write.writerow(['Judul', 'Pengarang', 'Tahun Terbit', 'Tersedia'])
         for book in buku:
-            writer.writerow([book['judul'], book['pengarang'], book['tahun terbit'], book['tersedia']])
+            write.writerow([book['judul'], book['pengarang'], book['tahun terbit'], book['tersedia']])
 
 def tampilkan_buku(buku):
+    os.system('cls')
     for i, buku in enumerate(buku):
         print(f"ID: {i+1}, Judul: {buku['judul']}, Pengarang: {buku['pengarang']}, Tahun Terbit: {buku['tahun terbit']}, Tersedia: {buku['tersedia']}")
 
 def meminjam_buku(buku, id):
+    os.system('cls')
     if id >= 0 and id < len(buku):
         if buku[id]['tersedia'] > 0:
             buku[id]['tersedia'] -= 1
@@ -39,6 +44,7 @@ def meminjam_buku(buku, id):
         print("Indeks buku tidak valid.")
 
 def kembalikan_buku(buku, id):
+    os.system('cls')
     if id >= 0 and id < len(buku):
         buku[id]['tersedia'] += 1
         print(f"Buku '{buku[id]['judul']}' telah dikembalikan.")
@@ -46,6 +52,7 @@ def kembalikan_buku(buku, id):
         print("Indeks buku tidak valid.")
 
 def main():
+    
     daftar_buku = daftarbuku('Digital_Library\DaftarBuku.csv')
 
     while True:
