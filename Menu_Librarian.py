@@ -1,5 +1,6 @@
 # Menu
 def menu():
+    import os
     print("Pilih menu yang ingin diakses")
     print("[1] Lihat Daftar Buku")
     print("[2] Tambah Daftar Buku")
@@ -9,8 +10,13 @@ def menu():
     print("[6] Hapus Data Peminjam")
     print("[7] Keluar")
     
-    kode = int(input("Masukkan kode menu yang ingin diakses: "))
-    pilih_menu(kode)
+    try:
+        kode = int(input("Masukkan kode menu yang ingin diakses: "))
+        pilih_menu(kode)
+    except ValueError:
+        os.system('cls')
+        print("Kode yang dimasukkan tidak valid. Silakan coba lagi.")
+        menu()
 
 def pilih_menu(x):
     if x==1:

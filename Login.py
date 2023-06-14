@@ -90,7 +90,7 @@ def access(option):
         print("Akun berhasil dibuat, silahkan masuk")
 
 def check_existing_username(username):
-    os.system('cls')
+    #os.system('cls')
     with open('Digital_Library\DataAkun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
