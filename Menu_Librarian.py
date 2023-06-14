@@ -91,12 +91,17 @@ def caribuku():
     isi = bukadata.readlines()
     isi.sort()
 
+    judul_ada = False
     i=1
     for data_buku in isi:
         pecah = data_buku.split(",")
         if pecah[0] == cari:
             print("\nJudul: "+pecah[0]+"\nPenulis: "+pecah[1]+"\nTahun Terbit: "+pecah[2]+"\nBuku yang Tersedia: "+pecah[3], end=" ")
             i += 1
+            judul_ada = True
+    
+    if not judul_ada:
+        print("\nMohon maaf, judul yang Anda cari tidak ditemukan.")
 
     print("\n\nTekan ENTER untuk kembali ke menu.")
     bukadata.close()
