@@ -3,6 +3,7 @@ import os
 import datetime
 
 angka=0
+list = []
 
 def daftarbuku(filename):
     os.system('cls')
@@ -21,7 +22,6 @@ def daftarbuku(filename):
     return buku
 
 def perubahan(filename, buku):
-    #os.system('cls')
     with open(filename, 'w', newline='') as file:
         write = csv.writer(file)
         write.writerow(['Judul', 'Pengarang', 'Tahun Terbit', 'Tersedia'])
@@ -38,10 +38,9 @@ def meminjam_buku(buku, id, peminjam):
     global angka
     global id_buku2
     jaminan = 25000
-    list = []
     if angka==1:
         id_buku2 = int(input("Masukkan indeks buku: ")) - 1
-        #list.append(id_buku2)
+        list.append(id_buku2)
         angka=0
         meminjam_buku(buku, id_buku2, peminjam)
     else:
@@ -50,7 +49,6 @@ def meminjam_buku(buku, id, peminjam):
                 buku[id]['tersedia'] -= 1
                 judul_buku = buku[id]['judul']
                 waktu_peminjaman = datetime.date.today()
-                
                 
                 with open('Digital_Library\DaftarPeminjam.csv', 'a', newline='') as file:
                     writer = csv.writer(file)
@@ -65,8 +63,7 @@ def meminjam_buku(buku, id, peminjam):
                     angka=1
                     meminjam_buku(buku, id, peminjam)
                 else :
-                    list.append(id)
-                    total = jaminan*(len(list))
+                    total = jaminan*((len(list))+1)
                     print("Total jaminan Anda sebesar Rp", total)
                     perubahan('Digital_Library\DaftarBuku.csv', buku)
                     print("\nTekan ENTER untuk kembali ke menu")
@@ -76,6 +73,7 @@ def meminjam_buku(buku, id, peminjam):
                 perubahan('Digital_Library\DaftarBuku.csv', buku)
         else:
             print("Indeks buku tidak valid.")
+
 
 def kembalikan_buku(buku, id, peminjam):
     import csv
@@ -106,6 +104,7 @@ def kembalikan_buku(buku, id, peminjam):
 def main():
     global id_buku
     global nama_peminjam
+    
     daftar_buku = daftarbuku('Digital_Library\DaftarBuku.csv')
     peminjam = {}
 

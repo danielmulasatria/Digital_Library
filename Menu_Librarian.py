@@ -152,7 +152,7 @@ def daftarpeminjam():
           for data_buku in isi:
                   pecah = data_buku.split(",")
                   #print("\n"+str(i)+".",end=" ")
-                  print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2])
+                  print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2]+"|"+pecah[3])
                   #i =+ 1
     print("\nTekan ENTER untuk kembali ke menu")
     bukadata.close()
