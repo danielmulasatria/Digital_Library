@@ -33,6 +33,7 @@ def pilih_menu(x):
        hapuspeminjam()
     elif x==7:
         print("Anda telah keluar dari daftar menu!")
+        exit()
     else:
         raise ValueError("Kode yang dimasukkan tidak valid")
 
@@ -52,7 +53,7 @@ def daftarbuku():
             print("\n Data Buku KOSONG")
         else:
             headers="firstrow"
-            print(tabulate.tabulate(data, headers, tablefmt="grid"))
+            print(tabulate.tabulate(data, headers, tablefmt="orgtbl"))
     print('\nTekan ENTER untuk kembali ke menu.')
     file.close()
     input()

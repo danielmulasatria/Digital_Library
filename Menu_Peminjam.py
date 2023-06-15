@@ -2,6 +2,8 @@ import csv
 import os
 import datetime
 
+angka=0
+
 def daftarbuku(filename):
     os.system('cls')
     buku = []
@@ -33,32 +35,47 @@ def tampilkan_buku(buku):
 
 def meminjam_buku(buku, id, peminjam):
     #os.system('cls')
-    if id >= 0 and id < len(buku):
-        if buku[id]['tersedia'] > 0:
-            buku[id]['tersedia'] -= 1
-            judul_buku = buku[id]['judul']
-            nama_peminjam = input("Masukkan nama Anda: ")
-            waktu_peminjaman = datetime.date.today()
-            
-            with open('Digital_Library\DaftarPeminjam.csv', 'a', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow([nama_peminjam, judul_buku, waktu_peminjaman])
-                
-            peminjam[judul_buku] = {'nama': nama_peminjam, 'waktu': waktu_peminjaman}
-            print(f"Buku '{judul_buku}' telah berhasil Anda pinjam.")
-            
-            print("\nIngin menambahkan buku lagi? (Ya/Tidak)", end=" ")
-            tambahdata = input(" : ")
-            if tambahdata == "ya" or tambahdata == "Ya":
-                meminjam_buku(buku, id, peminjam)
-            else :
-                perubahan('Digital_Library\DaftarBuku.csv', buku)
-                print("\nTekan ENTER untuk kembali ke menu")
-                input()
-        else:
-            print("Maaf, buku ini sedang tidak tersedia.")
+    global angka
+    global id_buku2
+    jaminan = 25000
+    list = []
+    if angka==1:
+        id_buku2 = int(input("Masukkan indeks buku: ")) - 1
+        #list.append(id_buku2)
+        angka=0
+        meminjam_buku(buku, id_buku2, peminjam)
     else:
-        print("Indeks buku tidak valid.")
+        if id >= 0 and id < len(buku):
+            if buku[id]['tersedia'] > 0:
+                buku[id]['tersedia'] -= 1
+                judul_buku = buku[id]['judul']
+                waktu_peminjaman = datetime.date.today()
+                
+                
+                with open('Digital_Library\DaftarPeminjam.csv', 'a', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerow([nama_peminjam, judul_buku, waktu_peminjaman, jaminan])
+                    
+                peminjam[judul_buku] = {'nama': nama_peminjam, 'waktu': waktu_peminjaman}
+                print(f"Buku '{judul_buku}' telah berhasil Anda pinjam.")
+                
+                print("\nIngin menambahkan buku lagi? (Ya/Tidak)", end=" ")
+                tambahdata = input(" : ")
+                if tambahdata == "ya" or tambahdata == "Ya":
+                    angka=1
+                    meminjam_buku(buku, id, peminjam)
+                else :
+                    list.append(id)
+                    total = jaminan*(len(list))
+                    print("Total jaminan Anda sebesar Rp", total)
+                    perubahan('Digital_Library\DaftarBuku.csv', buku)
+                    print("\nTekan ENTER untuk kembali ke menu")
+                    input()
+            else:
+                print("Maaf, buku ini sedang tidak tersedia.")
+                perubahan('Digital_Library\DaftarBuku.csv', buku)
+        else:
+            print("Indeks buku tidak valid.")
 
 def kembalikan_buku(buku, id, peminjam):
     import csv
@@ -87,7 +104,8 @@ def kembalikan_buku(buku, id, peminjam):
 
 
 def main():
-    
+    global id_buku
+    global nama_peminjam
     daftar_buku = daftarbuku('Digital_Library\DaftarBuku.csv')
     peminjam = {}
 
@@ -103,6 +121,7 @@ def main():
         if pilih == '1':
             tampilkan_buku(daftar_buku)
         elif pilih == '2':
+            nama_peminjam = input("Masukkan nama Anda: ")
             id_buku = int(input("Masukkan indeks buku: ")) - 1
             meminjam_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '3':

@@ -64,7 +64,8 @@ def masuk(username,password):
         print("Login Berhasil!")
         p.main()
     else:
-        print("Username atau Password salah! Silahkan buat akun") 
+        print("Username atau Password salah! Silahkan buat akun")
+        mulai()
         
 def daftar(username, password):
     os.system("cls")
@@ -78,6 +79,7 @@ def daftar(username, password):
 def access(option):
     os.system('cls')
     global username
+    global password
     if option == "masuk":
         username = input("Masukkan Username: ")
         password = input("Masukkan Password: ")
@@ -88,6 +90,7 @@ def access(option):
         password = input("Masukkan Password: ")
         daftar(username, password)
         print("Akun berhasil dibuat, silahkan masuk")
+        pilih()
 
 def check_existing_username(username):
     #os.system('cls')
@@ -99,7 +102,7 @@ def check_existing_username(username):
     return False
 
 def mulai():
-    os.system("cls")
+    #os.system("cls")
     global option
     print("Selamat datang!")
     print("Ketik 'masuk' jika sudah punya akun")
@@ -110,12 +113,15 @@ def mulai():
 ###################################################################################################################################
 
 # Login Utama
+#os.system("cls")
 def pilih():
+    print("Selamat datang di Digital Library\n")
+    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
     try:
-        os.system("cls")
-        print("Selamat datang di Digital Library\n")
-        print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
         angka = input("Masukkan kode angka: ")
+    except ValueError:
+        print("Kode yang dimasukkan tidak valid")
+    else:
         if angka=='1':
             start()
             access_librarian(options)
@@ -124,9 +130,6 @@ def pilih():
             access(option)
         else:
             os.system('cls')
-            raise ValueError("Kode yang dimasukkan tidak valid")
-    except Exception as e:
-        os.system('cls')
-        print("Terjadi kesalahan: ", str(e))
+            pilih()
     
 pilih()
