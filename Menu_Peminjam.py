@@ -1,6 +1,8 @@
 import csv
 import os
 import datetime
+from tabulate import tabulate
+import pandas as pd
 
 angka=0
 list = []
@@ -30,18 +32,30 @@ def perubahan(filename, buku):
 
 def tampilkan_buku(buku):
     os.system('cls')
-    for i, buku in enumerate(buku):
-        print(f"ID: {i+1}, Judul: {buku['judul']}, Pengarang: {buku['pengarang']}, Tahun Terbit: {buku['tahun terbit']}, Tersedia: {buku['tersedia']}")
-
+    data = pd.read_csv('Digital_Library\DaftarBuku.csv')
+    print("\n\t- Daftar Peminjam Buku -")
+    
+    if len(data) == 0:
+        print("\n[Data tidak tersedia]")
+    else:
+        print()
+        print(tabulate(data, headers=["No.","Judul Buku","Pengarang", "Tahun Terbit", "Tersedia"],tablefmt="plain"))
+        
 def meminjam_buku(buku, id, peminjam):
     #os.system('cls')
     global angka
     global id_buku2
     jaminan = 25000
     if angka==1:
-        id_buku2 = int(input("Masukkan indeks buku: ")) - 1
-        list.append(id_buku2)
-        angka=0
+        while True:
+                try:
+                    id_buku2 = int(input("Masukkan indeks buku: ")) - 1
+                    list.append(id_buku2)
+                    angka=0
+                    break
+                except ValueError:
+                    print("Mohon masukkan input sesuai ID.")
+                    
         meminjam_buku(buku, id_buku2, peminjam)
     else:
         if id >= 0 and id < len(buku):
@@ -129,11 +143,21 @@ def main():
             tampilkan_buku(daftar_buku)
         elif pilih == '2':
             nama_peminjam = input("Masukkan nama Anda: ")
-            id_buku = int(input("Masukkan indeks buku: ")) - 1
+            while True:
+                try:
+                    id_buku = int(input("Masukkan indeks buku: ")) - 1
+                    break
+                except ValueError:
+                    print("Mohon masukkan input sesuai ID.")
+                    
             meminjam_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '3':
-            id_buku = int(input("Masukkan indeks buku: ")) - 1
-            kembalikan_buku(daftar_buku, id_buku, peminjam)
+            try:
+                id_buku = int(input("Masukkan indeks buku: ")) - 1
+            except ValueError:
+                print("Mohon masukkan input sesuai ID.")
+            else:
+                kembalikan_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '4':
             perubahan('Digital_Library\DaftarBuku.csv', daftar_buku)
             print("Anda telah keluar dari menu!")

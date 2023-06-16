@@ -32,7 +32,7 @@ def pilih_menu(x):
     elif x==6:
        hapuspeminjam()
     elif x==7:
-        print("Anda telah keluar dari daftar menu!")
+        print("Anda telah keluar dari daftar program!")
         exit()
     else:
         raise ValueError("Kode yang dimasukkan tidak valid")
