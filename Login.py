@@ -91,7 +91,7 @@ def access(option):
         username = input("Masukkan Username: ")
         password = input("Masukkan Password: ")
         daftar(username, password)
-        print("Akun berhasil dibuat, silahkan masuk")
+        print("Akun berhasil dibuat, silahkan masuk kembali.")
         mulai()
         access(option)
         
