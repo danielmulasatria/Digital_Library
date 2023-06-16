@@ -115,8 +115,6 @@ def mulai():
 # Login Utama
 #os.system("cls")
 def pilih():
-    print("Selamat datang di Digital Library\n")
-    print("Masuk sebagai \n [1] Librarian \n [2] Pengunjung\n")
     try:
         angka = input("Masukkan kode angka: ")
     except ValueError:
@@ -131,5 +129,3 @@ def pilih():
         else:
             os.system('cls')
             pilih()
-    
-pilih()

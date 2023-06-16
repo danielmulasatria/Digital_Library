@@ -137,51 +137,45 @@ def hapusbuku():
 
 def daftarpeminjam():
     import os
+    import pandas as pd
+    from tabulate import tabulate
     os.system("cls")
+    data = pd.read_csv('Digital_Library\DaftarPeminjam.csv')
     print("\n\t- Daftar Peminjam Buku -")
-    bukadata = open("Digital_Library\DaftarPeminjam.csv","r")
-    isi = bukadata.readlines()
-    isi.sort()
-    if len(isi) == 0:
+    
+    if len(data) == 0:
         print("\n[Data tidak tersedia]")
-    else :
-          print ("\n=================================================")
-          print ("| NAMA | JUDUL BUKU | TGL.PEMAKAIAN | JAMINAN |")
-          print ("===================================================")
-          #i = 1
-          for data_buku in isi:
-                  pecah = data_buku.split(",")
-                  #print("\n"+str(i)+".",end=" ")
-                  print("| "+pecah[0]+" | "+pecah[1]+" | "+pecah[2]+"|"+pecah[3])
-                  #i =+ 1
+    else:
+        print()
+        print(tabulate(data, headers=["No.","Nama","Judul Buku","Tgl. Pemakaian", "Jaminan"],tablefmt="grid"))
     print("\nTekan ENTER untuk kembali ke menu")
-    bukadata.close()
     input()
     menu()
 
 def hapuspeminjam():
     import os
+    import pandas as pd
     os.system("CLS")
+    data = pd.read_csv('Digital_Library\DaftarPeminjam.csv')
     print("\n-  Hapus Data Peminjam Buku  -")
-    bukadata = open("Digital_Library\DaftarPeminjam.csv")
-    output = []
-    str = input("\nMasukkan Nama Peminjam yang Ingin Dihapus: ")
-    for hps in bukadata:
-        if not hps.startswith(str):
-            output.append(hps)
-
-    bukadata = open("Digital_Library\DaftarPeminjam.csv","w")
-    bukadata.writelines(output)
-    print("\n[Data Peminjam Telah Terhapus]")
-    bukadata.close()
-    print("\nIngin menghapus data peminjam lagi? (Ya/Tidak)", end=" ")
-    hapus_peminjam = input(" : ")
-    if hapus_peminjam == "ya" or hapus_peminjam == "Ya":
+    try:
+        hapus = int(input("Masukkan nomor yang ingin dihapus: "))
+    except ValueError:
+        print("Input Gagal. Silahkan masukkan nomor yang sesuai.")
         hapuspeminjam()
     else:
-        print("\nTekan ENTER untuk kembali ke menu.")
-        input()
-        menu()
-        
+        if hapus in range(len(data)):
+            data.drop(index=hapus, inplace=True)
+            data.to_csv('Digital_Library\DaftarPeminjam.csv', index=False)
+            data.reset_index(drop=True,inplace=True)
+        print("\nIngin menghapus data peminjam lagi? (Ya/Tidak)", end=" ")
+        hapus_peminjam = input(" : ")
+        if hapus_peminjam == "ya" or hapus_peminjam == "Ya":
+            hapuspeminjam()
+        else:
+            print("\nTekan ENTER untuk kembali ke menu.")
+            input()
+            menu()
+
 if __name__ == '__main__':
     menu()

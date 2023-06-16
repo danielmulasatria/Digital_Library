@@ -52,7 +52,7 @@ def meminjam_buku(buku, id, peminjam):
                 
                 with open('Digital_Library\DaftarPeminjam.csv', 'a', newline='') as file:
                     writer = csv.writer(file)
-                    writer.writerow([nama_peminjam, judul_buku, waktu_peminjaman, jaminan])
+                    writer.writerow([nama_peminjam, judul_buku, waktu_peminjaman, jaminan],)
                     
                 peminjam[judul_buku] = {'nama': nama_peminjam, 'waktu': waktu_peminjaman}
                 print(f"Buku '{judul_buku}' telah berhasil Anda pinjam.")
@@ -78,27 +78,35 @@ def meminjam_buku(buku, id, peminjam):
 def kembalikan_buku(buku, id, peminjam):
     import csv
     #os.system('cls')
-    if id >= 0 and id < len(buku):
-        judul_buku = buku[id]['judul']
-        if judul_buku in peminjam:
-            buku[id]['tersedia'] += 1
-            nama_peminjam = peminjam[judul_buku]['nama']
-            waktu_peminjaman = peminjam[judul_buku]['waktu']
-            del peminjam[judul_buku]
-            print(f"Buku '{judul_buku}' telah dikembalikan. Terima kasih.")
-            
-            print("\nIngin mengembalikan buku lagi? (Ya/Tidak)", end=" ")
-            tambahdata = input(" : ")
-            if tambahdata == "ya" or tambahdata == "Ya":
-                kembalikan_buku(buku, id, peminjam)
-            else :
-                perubahan('Digital_Library\DaftarBuku.csv', buku)
-                print("\nTekan ENTER untuk kembali ke menu")    
-                input()
-        else:
-            print("Buku ini belum dipinjam.")
+    global angka
+    global id_buku2
+    if angka==1:
+        id_buku2 = int(input("Masukkan indeks buku: ")) - 1
+        angka=0
+        kembalikan_buku(buku, id_buku2, peminjam)
     else:
-        print("Indeks buku tidak valid.")
+        if id >= 0 and id < len(buku):
+            judul_buku = buku[id]['judul']
+            if judul_buku in peminjam:
+                buku[id]['tersedia'] += 1
+                nama_peminjam = peminjam[judul_buku]['nama']
+                waktu_peminjaman = peminjam[judul_buku]['waktu']
+                del peminjam[judul_buku]
+                print(f"Buku '{judul_buku}' telah dikembalikan. Terima kasih.")
+                
+                print("\nIngin mengembalikan buku lagi? (Ya/Tidak)", end=" ")
+                tambahdata = input(" : ")
+                if tambahdata == "ya" or tambahdata == "Ya":
+                    angka=1
+                    kembalikan_buku(buku, id, peminjam)
+                else :
+                    perubahan('Digital_Library\DaftarBuku.csv', buku)
+                    print("\nTekan ENTER untuk kembali ke menu")    
+                    input()
+            else:
+                print("Buku ini belum dipinjam.")
+        else:
+            print("Indeks buku tidak valid.")
 
 
 def main():
