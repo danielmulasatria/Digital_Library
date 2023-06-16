@@ -24,12 +24,13 @@ def login(username,password):
         lib.menu()
     else:
         print("Username atau Password salah!")
-        pilih()
+        start()
+        access_librarian(options)
 
 def access_librarian(options):
     os.system("cls")
     global username
-    if options == "Ya":
+    if options == "ya":
         username = input("Masukkan Username:  ")
         password = input("Masukkan Password:  ")
         login(username, password)
@@ -42,7 +43,8 @@ def start():
     global options
     print("Selamat datang!")
     options = input("Ketik 'Ya' apabila ingin masuk: ")
-    if options != "Ya":
+    options = options.lower()
+    if options != "ya":
         pilih()
 
         
@@ -90,10 +92,11 @@ def access(option):
         password = input("Masukkan Password: ")
         daftar(username, password)
         print("Akun berhasil dibuat, silahkan masuk")
-        pilih()
-
+        mulai()
+        access(option)
+        
+        
 def check_existing_username(username):
-    #os.system('cls')
     with open('Digital_Library\DataAkun.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -104,10 +107,10 @@ def check_existing_username(username):
 def mulai():
     #os.system("cls")
     global option
-    print("Selamat datang!")
+    print("\nSelamat datang!")
     print("Ketik 'masuk' jika sudah punya akun")
     print("Ketik 'daftar' jika belum punya akun")
-    option = input("Silahkan masukkan (masuk/daftar): ")
+    option = input("Silahkan masukkan (masuk/daftar): \n")
     if option !="masuk" and option !="daftar":
         mulai()
 ###################################################################################################################################
@@ -116,6 +119,10 @@ def mulai():
 #os.system("cls")
 def pilih():
     try:
+        # print("=================================================================")
+        # print("Selamat datang di Digital Library\n")
+        # print("Silahkan pilih opsi masuk: \n [1] Librarian \n [2] Pengunjung")
+        # print("=================================================================")
         angka = input("Masukkan kode angka: ")
     except ValueError:
         print("Kode yang dimasukkan tidak valid")
@@ -127,5 +134,5 @@ def pilih():
             mulai()
             access(option)
         else:
-            os.system('cls')
+            #os.system('cls')
             pilih()
