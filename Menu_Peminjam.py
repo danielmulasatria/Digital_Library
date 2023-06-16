@@ -5,7 +5,7 @@ from tabulate import tabulate
 import pandas as pd
 
 angka=0
-list = []
+ls = []
 
 def daftarbuku(filename):
     os.system('cls')
@@ -50,7 +50,7 @@ def meminjam_buku(buku, id, peminjam):
         while True:
                 try:
                     id_buku2 = int(input("Masukkan indeks buku: ")) - 1
-                    list.append(id_buku2)
+                    ls.append(id_buku2)
                     angka=0
                     break
                 except ValueError:
@@ -78,7 +78,7 @@ def meminjam_buku(buku, id, peminjam):
                     meminjam_buku(buku, id, peminjam)
                 else :
                     perubahan('Digital_Library\DaftarBuku.csv', buku)
-                    total = jaminan*((len(list))+1)
+                    total = jaminan*((len(ls))+1)
                     print("Total jaminan Anda sebesar Rp", total)
                     print("\nTekan ENTER untuk kembali ke menu")
                     input()
@@ -90,22 +90,32 @@ def meminjam_buku(buku, id, peminjam):
 
 
 def kembalikan_buku(buku, id, peminjam):
-    import csv
     #os.system('cls')
+
     global angka
     global id_buku2
+    
     if angka==1:
         id_buku2 = int(input("Masukkan indeks buku: ")) - 1
         angka=0
         kembalikan_buku(buku, id_buku2, peminjam)
     else:
+        with open("Digital_Library\DaftarPeminjam.csv","r",newline="") as f:
+            baca = csv.reader(f)
+            konten = list(baca)
+        buku_dipinjam = [ baris[1] for baris in konten ]
         if id >= 0 and id < len(buku):
             judul_buku = buku[id]['judul']
-            if judul_buku in peminjam:
+            if judul_buku in buku_dipinjam:
                 buku[id]['tersedia'] += 1
-                nama_peminjam = peminjam[judul_buku]['nama']
-                waktu_peminjaman = peminjam[judul_buku]['waktu']
-                del peminjam[judul_buku]
+                for i,baris in enumerate(konten):
+                    if baris[0] == peminjam and baris[1] == judul_buku:
+                        konten.pop(i)
+                        break
+
+                # nama_peminjam = peminjam[judul_buku]['nama']
+                # waktu_peminjaman = peminjam[judul_buku]['waktu']
+                # del peminjam[judul_buku]
                 print(f"Buku '{judul_buku}' telah dikembalikan. Terima kasih.")
                 
                 print("\nIngin mengembalikan buku lagi? (Ya/Tidak)", end=" ")
@@ -121,8 +131,7 @@ def kembalikan_buku(buku, id, peminjam):
                 print("Buku ini belum dipinjam.")
         else:
             print("Indeks buku tidak valid.")
-
-
+            
 def main():
     global id_buku
     global nama_peminjam
@@ -152,12 +161,13 @@ def main():
                     
             meminjam_buku(daftar_buku, id_buku, peminjam)
         elif pilih == '3':
+            nama_peminjam = input("Masukkan nama Anda: ")
             try:
                 id_buku = int(input("Masukkan indeks buku: ")) - 1
             except ValueError:
                 print("Mohon masukkan input sesuai ID.")
             else:
-                kembalikan_buku(daftar_buku, id_buku, peminjam)
+                kembalikan_buku(daftar_buku, id_buku, nama_peminjam)
         elif pilih == '4':
             perubahan('Digital_Library\DaftarBuku.csv', daftar_buku)
             print("Anda telah keluar dari menu!")
