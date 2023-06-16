@@ -106,7 +106,10 @@ def check_existing_username(username):
 
 def mulai():
     #os.system("cls")
+    global username
+    global password
     global option
+    
     print("\nSelamat datang!")
     print("Ketik 'masuk' jika sudah punya akun")
     print("Ketik 'daftar' jika belum punya akun")
