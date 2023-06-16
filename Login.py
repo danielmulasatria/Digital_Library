@@ -80,21 +80,22 @@ def daftar(username, password):
 
 def access(option):
     os.system('cls')
+
     global username
     global password
+
     if option == "masuk":
         username = input("Masukkan Username: ")
         password = input("Masukkan Password: ")
         masuk(username, password)
-    else:
+
+    elif option == "daftar":
         print("Masukkan Username dan Password yang baru")
         username = input("Masukkan Username: ")
         password = input("Masukkan Password: ")
         daftar(username, password)
         print("Akun berhasil dibuat, silahkan masuk kembali.")
-        mulai()
-        access(option)
-        
+        mulai()   
         
 def check_existing_username(username):
     with open('Digital_Library\DataAkun.csv', 'r') as file:
@@ -113,29 +114,41 @@ def mulai():
     print("\nSelamat datang!")
     print("Ketik 'masuk' jika sudah punya akun")
     print("Ketik 'daftar' jika belum punya akun")
-    option = input("Silahkan masukkan (masuk/daftar): \n")
-    if option !="masuk" and option !="daftar":
-        mulai()
-###################################################################################################################################
+    while True:
+        try:
+            option = input("Silahkan masukkan (masuk/daftar): \n")
+            assert option in ["masuk", "daftar"], "Input tidak valid!"
+            break
+        except ValueError:
+            print("Kode yang dimasukkan tidak valid")
+        except AssertionError as er:
+            print(er)
+    
+    access(option)
 
+
+###################################################################################################################################
 # Login Utama
-#os.system("cls")
+
 def pilih():
-    try:
-        # print("=================================================================")
-        # print("Selamat datang di Digital Library\n")
-        # print("Silahkan pilih opsi masuk: \n [1] Librarian \n [2] Pengunjung")
-        # print("=================================================================")
-        angka = input("Masukkan kode angka: ")
-    except ValueError:
-        print("Kode yang dimasukkan tidak valid")
-    else:
-        if angka=='1':
-            start()
-            access_librarian(options)
-        elif angka=='2':
-            mulai()
-            access(option)
-        else:
-            #os.system('cls')
-            pilih()
+    while True:
+        try:
+            # print("=================================================================")
+            # print("Selamat datang di Digital Library\n")
+            # print("Silahkan pilih opsi masuk: \n [1] Librarian \n [2] Pengunjung")
+            # print("=================================================================")
+            angka = input("Masukkan kode angka: ")
+            assert angka in ["1", "2"], "Input tidak valid!"
+            break
+        except ValueError:
+            print("Kode yang dimasukkan tidak valid")
+        except AssertionError as er:
+            print(er)
+    if angka=='1':
+        start()
+        access_librarian(options)
+    elif angka=='2':
+        mulai()
+        access(option)
+
+# pilih()

@@ -77,9 +77,9 @@ def meminjam_buku(buku, id, peminjam):
                     angka=1
                     meminjam_buku(buku, id, peminjam)
                 else :
+                    perubahan('Digital_Library\DaftarBuku.csv', buku)
                     total = jaminan*((len(list))+1)
                     print("Total jaminan Anda sebesar Rp", total)
-                    perubahan('Digital_Library\DaftarBuku.csv', buku)
                     print("\nTekan ENTER untuk kembali ke menu")
                     input()
             else:

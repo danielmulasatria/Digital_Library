@@ -129,7 +129,7 @@ def hapusbuku():
     print('\n Apakah ingin menghapus data buku lagi? (Ya/Tidak)', end=" ")
     hapus_data = input(" : ")
     if hapus_data == "Ya" or hapus_data== "ya":
-        hapus_data()
+        hapusbuku()
     else:
         print("\n Tekan ENTER untuk kembali ke menu")
         input()
