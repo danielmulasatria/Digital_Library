@@ -43,7 +43,7 @@ def daftarbuku():
     import tabulate
     
     os.system("cls")
-    print("\n Daftar buku: ")
+    print("\nDAFTAR BUKU: ")
     data = []
     with open("Digital_Library\DaftarBuku.csv","r") as file:
         reader = csv.reader(file)
@@ -63,8 +63,8 @@ def daftarbuku():
 def tambahbuku():
     import os
     os.system("CLS")
-    print("\n   Tambah Buku ")
-    print("\n Masukkan data buku baru")
+    print("\n         TAMBAH BUKU ")
+    print("\nMasukkan data buku baru")
     judul = input("Judul Buku : ")
     penulis = input("Penulis Buku : ")
     tahun = input("Tahun Terbit Buku : ")
@@ -113,7 +113,7 @@ def caribuku():
 def hapusbuku():
     import os
     os.system('cls')
-    print("\n Hapus Data Buku")
+    print("\n           HAPUS DATA BUKU")
     buka_data = open("Digital_Library\DaftarBuku.csv")
     list_buku = []
     hapus_buku = input("Masukkan judul buku yang ingin dihapus : ")
@@ -126,12 +126,12 @@ def hapusbuku():
     print("Data Buku Telah Terhapus")
     buka_data.close()
     
-    print('\n Apakah ingin menghapus data buku lagi? (Ya/Tidak)', end=" ")
+    print('\nApakah ingin menghapus data buku lagi? (Ya/Tidak)', end=" ")
     hapus_data = input(" : ")
     if hapus_data == "Ya" or hapus_data== "ya":
         hapusbuku()
     else:
-        print("\n Tekan ENTER untuk kembali ke menu")
+        print("\nTekan ENTER untuk kembali ke menu")
         input()
         menu()
 
@@ -141,7 +141,7 @@ def daftarpeminjam():
     from tabulate import tabulate
     os.system("cls")
     data = pd.read_csv('Digital_Library\DaftarPeminjam.csv')
-    print("\n\t- Daftar Peminjam Buku -")
+    print("\n\t- DAFTAR PEMINJAM BUKU -")
     
     if len(data) == 0:
         print("\n[Data tidak tersedia]")
@@ -157,7 +157,7 @@ def hapuspeminjam():
     import pandas as pd
     os.system("CLS")
     data = pd.read_csv('Digital_Library\DaftarPeminjam.csv')
-    print("\n-  Hapus Data Peminjam Buku  -")
+    print("\n-  HAPUS DATA PEMINJAM BUKU  -")
     try:
         hapus = int(input("Masukkan nomor yang ingin dihapus: "))
     except ValueError:
