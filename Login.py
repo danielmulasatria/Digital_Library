@@ -2,7 +2,7 @@ import os
 import csv
 import Menu_Librarian as lib
 import Menu_Peminjam as p
-# import Main_Program as main
+
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -42,11 +42,6 @@ def access_librarian(options):
 def start():
     os.system("cls")
     global options
-    # print("Selamat datang!")
-    # options = input("Ketik 'Ya' apabila ingin masuk: ")
-    # options = options.lower()
-    # if options != "ya":
-    #     pilih()
     print("\nSelamat datang!")
     while True:
         try:
