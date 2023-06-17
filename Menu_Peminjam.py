@@ -112,10 +112,6 @@ def kembalikan_buku(buku, id, peminjam):
                     if baris[0] == peminjam and baris[1] == judul_buku:
                         konten.pop(i)
                         break
-
-                # nama_peminjam = peminjam[judul_buku]['nama']
-                # waktu_peminjaman = peminjam[judul_buku]['waktu']
-                # del peminjam[judul_buku]
                 print(f"Buku '{judul_buku}' telah dikembalikan. Terima kasih.")
                 
                 print("\nIngin mengembalikan buku lagi? (Ya/Tidak)", end=" ")
@@ -171,7 +167,7 @@ def main():
         elif pilih == '4':
             perubahan('Digital_Library\DaftarBuku.csv', daftar_buku)
             print("Anda telah keluar dari menu!")
-            break
+            exit()
         else:
             print("Pilihan tidak valid. Silakan coba lagi.")
 
