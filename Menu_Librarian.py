@@ -44,6 +44,7 @@ def daftarbuku():
     
     os.system("cls")
     print("\nDAFTAR BUKU: ")
+    print("\nDAFTAR BUKU: ")
     data = []
     with open("Digital_Library\DaftarBuku.csv","r") as file:
         reader = csv.reader(file)
@@ -113,7 +114,6 @@ def caribuku():
 def hapusbuku():
     import os
     os.system('cls')
-    print("\n Hapus Data Buku")
     print("\n           HAPUS DATA BUKU")
     buka_data = open("Digital_Library\DaftarBuku.csv")
     list_buku = []
