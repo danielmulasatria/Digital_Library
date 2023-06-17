@@ -2,6 +2,7 @@ import os
 import csv
 import Menu_Librarian as lib
 import Menu_Peminjam as p
+# import Main_Program as main
 os.system("cls")
 
 # Login Sebagai Librarian
@@ -133,10 +134,6 @@ def mulai():
 def pilih():
     while True:
         try:
-            # print("=================================================================")
-            # print("Selamat datang di Digital Library\n")
-            # print("Silahkan pilih opsi masuk: \n [1] Librarian \n [2] Pengunjung")
-            # print("=================================================================")
             angka = input("Masukkan kode angka: ")
             assert angka in ["1", "2"], "Input tidak valid!"
             break

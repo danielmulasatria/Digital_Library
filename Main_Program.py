@@ -1,7 +1,5 @@
 import os
 import Login as Log
-import Menu_Librarian as Lib
-import Menu_Peminjam as P
 
 os.system('cls')
 

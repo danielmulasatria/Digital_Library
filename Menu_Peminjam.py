@@ -33,7 +33,7 @@ def perubahan(filename, buku):
 def tampilkan_buku(buku):
     os.system('cls')
     data = pd.read_csv('Digital_Library\DaftarBuku.csv')
-    print("\n\t- Daftar Peminjam Buku -")
+    print("\n\t- Daftar Buku -")
     
     if len(data) == 0:
         print("\n[Data tidak tersedia]")
