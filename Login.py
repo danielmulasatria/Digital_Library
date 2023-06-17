@@ -42,11 +42,24 @@ def access_librarian(options):
 def start():
     os.system("cls")
     global options
-    print("Selamat datang!")
-    options = input("Ketik 'Ya' apabila ingin masuk: ")
-    options = options.lower()
-    if options != "ya":
-        pilih()
+    # print("Selamat datang!")
+    # options = input("Ketik 'Ya' apabila ingin masuk: ")
+    # options = options.lower()
+    # if options != "ya":
+    #     pilih()
+    print("\nSelamat datang!")
+    while True:
+        try:
+            options = input("Ketik 'Ya' apabila ingin masuk: \n")
+            options = options.lower()
+            assert options in ["ya"], "Input tidak valid!"
+            break
+        except ValueError:
+            print("Input Anda salah!")
+        except AssertionError as er:
+            print(er)
+    
+    access_librarian(options)
 
         
 ###################################################################################################################################
@@ -118,6 +131,7 @@ def mulai():
     while True:
         try:
             option = input("Silahkan masukkan (masuk/daftar): \n")
+            option = option.lower()
             assert option in ["masuk", "daftar"], "Input tidak valid!"
             break
         except ValueError:

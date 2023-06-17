@@ -44,7 +44,6 @@ def daftarbuku():
     
     os.system("cls")
     print("\nDAFTAR BUKU: ")
-    print("\nDAFTAR BUKU: ")
     data = []
     with open("Digital_Library\DaftarBuku.csv","r") as file:
         reader = csv.reader(file)
